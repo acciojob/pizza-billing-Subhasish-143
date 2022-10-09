@@ -58,6 +58,7 @@ public class Pizza {
                 setBill(bill+"Extra Toppings Added: 120"+"\n");
             }
         }
+        eTopping = true;
     }
 
     public void addTakeaway(){
