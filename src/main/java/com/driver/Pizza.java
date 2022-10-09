@@ -41,9 +41,9 @@ public class Pizza {
     public void addExtraCheese(){
         if (!eCheese) {
             total += 80;
+            setBill(bill+"Extra Cheese Added: 80"+"\n");
+            eCheese = true;
         }
-        setBill(bill+"Extra Cheese Added: 80"+"\n");
-        eCheese = true;
     }
 
     public void addExtraToppings(){
@@ -65,9 +65,9 @@ public class Pizza {
         // your code goes here
         if (!bag) {
             total += 20;
+            setBill(bill+"Paperbag Added: 20"+"\n");
+            bag = true;
         }
-        setBill(bill+"Paperbag Added: 20"+"\n");
-        bag = true;
     }
 
     public String getBill(){
