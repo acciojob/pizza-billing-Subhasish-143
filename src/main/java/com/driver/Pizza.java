@@ -1,37 +1,36 @@
 package com.driver;
 
 public class Pizza {
-    public int total = 0;
-    public boolean eCheese = false;
-    public boolean eTopping = false;
-    public boolean bag = false;
+    private boolean eCheese;
+    private int cheesePrc;
+    private boolean eTopping;
+    private int toppPrc;
+    private boolean bag;
+    private int bagPrc;
+    private boolean result;
     private int price;
     private Boolean isVeg;
     private String bill;
 
-    public void setIsVeg(Boolean veg) {
-        isVeg = veg;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public void setBill(String bill) {
-        this.bill = bill;
-    }
-
     public Pizza(Boolean isVeg){
+        this.eCheese = false;
+        this.eTopping = false;
+        this.bag = false;
+        this.result = false;
+        this.cheesePrc = 80;
+        this.bagPrc = 20;
         this.isVeg = isVeg;
-        // your code goes here
+
         if (isVeg) {
-            setPrice(300);
+            this.price = 300;
+            this.toppPrc = 70;
         }
         else {
-            setPrice(400);
+            this.price = 400;
+            this.toppPrc = 120;
         }
-        total = price;
-        setBill("Base Price Of The Pizza: "+price+"\n");
+
+        this.bill = "Base Price Of The Pizza: "+this.price+"\n";
     }
 
     public int getPrice(){
@@ -40,8 +39,7 @@ public class Pizza {
 
     public void addExtraCheese(){
         if (!eCheese) {
-            total += 80;
-            setBill(bill+"Extra Cheese Added: 80"+"\n");
+            this.price = this.price + this.cheesePrc;
             eCheese = true;
         }
     }
@@ -49,14 +47,7 @@ public class Pizza {
     public void addExtraToppings(){
         // your code goes here
         if (!eTopping) {
-            if (isVeg) {
-                total += 70;
-                setBill(bill+"Extra Toppings Added: 70"+"\n");
-            }
-            else {
-                total += 120;
-                setBill(bill+"Extra Toppings Added: 120"+"\n");
-            }
+            this.price = this.price + this.toppPrc;
         }
         eTopping = true;
     }
@@ -64,15 +55,27 @@ public class Pizza {
     public void addTakeaway(){
         // your code goes here
         if (!bag) {
-            total += 20;
-            setBill(bill+"Paperbag Added: 20"+"\n");
+            this.price = this.price + this.bagPrc;
             bag = true;
         }
     }
 
     public String getBill(){
         // your code goes here
-        setBill(bill+"Total Price: "+total);
-        return this.bill;
+        if (!result) {
+            if (eCheese) {
+                this.bill = this.bill + "Extra Cheese Added: 80"+"\n";
+            }
+            if (eTopping) {
+                this.bill = this.bill + "Extra Toppings Added: "+toppPrc+"\n";
+            }
+            if (bag) {
+                this.bill = this.bill + "Paperbag Added: 20"+"\n";
+            }
+            this.bill = this.bill + "Total Price: " + this.price + "\n";
+            result = true;
+            return this.bill;
+        }
+        return "";
     }
 }
