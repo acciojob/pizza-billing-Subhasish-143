@@ -48,8 +48,8 @@ public class Pizza {
         // your code goes here
         if (!eTopping) {
             this.price = this.price + this.toppPrc;
+            eTopping = true;
         }
-        eTopping = true;
     }
 
     public void addTakeaway(){
@@ -62,6 +62,9 @@ public class Pizza {
 
     public String getBill(){
         // your code goes here
+
+        result = true;
+
         if (!result) {
             if (eCheese) {
                 this.bill = this.bill + "Extra Cheese Added: 80"+"\n";
@@ -73,9 +76,7 @@ public class Pizza {
                 this.bill = this.bill + "Paperbag Added: 20"+"\n";
             }
             this.bill = this.bill + "Total Price: " + this.price + "\n";
-            result = true;
-            return this.bill;
         }
-        return "";
+        return this.bill;
     }
 }
